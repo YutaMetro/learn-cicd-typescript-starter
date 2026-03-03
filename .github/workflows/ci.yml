@@ -23,3 +23,11 @@ jobs:
 
       - name: my tests
         run: npm run test -- --coverage
+
+  style:
+    name: Styles
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check for formatting issues
+        run: npm run format:check
