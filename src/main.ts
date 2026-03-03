@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import path from "path";
 import { config } from "./config.js";
-import { db } from "./db/index.js";
+import { db } from "./db";
 import { middlewareAuth } from "./api/middleware.js";
 import { handlerReadiness } from "./api/readiness.js";
 import { handlerNotesCreate, handlerNotesGet } from "./api/notes.js";
@@ -39,7 +39,6 @@ if (db) {
   v1Router.get("/notes", middlewareAuth(handlerNotesGet));
   v1Router.post("/notes", middlewareAuth(handlerNotesCreate));
 }
-
 v1Router.get("/healthz", handlerReadiness);
 
 app.use("/v1", v1Router);
